@@ -11,17 +11,21 @@ function solution(survey, choices) {
   };
 
   let point = 0;
-  let tempArr = "";
-  let val = "";
+  let tempArr = '';
+  let val = '';
+  const obj = { R: 0, T: 0, C: 0, F: 0, J: 0, M: 0, A: 0, N: 0 };
   const surveyCount = survey.length;
   for (let i = 0; i < surveyCount; i += 1) {
-	tempArr = survey[i].split('');
-	val = (choices[i] <= 3) ? tempArr[0] : ((choices[i] >= 5) ? tempArr[0] : "");
-	point = score[choices[i]];
-	if (val) {
-		
-	}
-    
+    tempArr = survey[i].split('');
+    val = choices[i] <= 3 ? tempArr[0] : choices[i] >= 5 ? tempArr[1] : '';
+    point = score[choices[i]];
+    if (val) {
+      obj[`${val}`] = obj[`${val}`] + point;
+    }
+  }
+  let i = 0;
+  let temp = '';
+  for (const val in obj) {
   }
 }
 

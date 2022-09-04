@@ -23,14 +23,26 @@ function solution(survey, choices) {
       obj[`${val}`] = obj[`${val}`] + point;
     }
   }
+  let returnVal = '';
   let i = 0;
-  let temp = '';
-  for (const val in obj) {
+  let firstVal = '';
+  let secondVal = '';
+  while (i < 8) {
+    firstVal = Object.values(obj)[i];
+    secondVal = Object.values(obj)[i + 1];
+    firstIndex = Object.keys(obj)[i];
+    secondIndex = Object.keys(obj)[i + 1];
+    asciiVal = firstIndex.charCodeAt(0) < secondIndex.charCodeAt(0) ? firstIndex : secondIndex;
+    returnVal =
+      returnVal +
+      (firstVal > secondVal ? firstIndex : firstVal === secondVal ? asciiVal : secondIndex);
+    i += 2;
   }
+  return returnVal;
 }
 
-const survey = ['AN', 'CF', 'MJ', 'RT', 'NA'];
-const choices = [5, 3, 2, 7, 5];
+const survey = ['TR', 'RT', 'TR'];
+const choices = [7, 1, 3];
 
-solution(survey, choices);
+console.log(solution(survey, choices));
 

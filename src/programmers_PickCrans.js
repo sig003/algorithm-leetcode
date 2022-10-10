@@ -14,20 +14,13 @@ function solution(board, moves) {
 
   let count = 0;
 
-  while (true) {
-    let stop = true;
-    for (let i = 0; i < array.length; i += 1) {
-      if (array[i] === array[i + 1]) {
-        array.splice(i, 2);
-        count += 1;
-
-        stop = false;
-      }
+  for (let i = 0; i < array.length; i += 1) {
+    if (array[i] === array[i + 1]) {
+      count += 2;
+      i += 2;
     }
-
-    if (stop === true) break;
   }
-  return count * 2;
+  return count;
 }
 
 const board = [
